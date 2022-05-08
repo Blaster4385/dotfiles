@@ -20,7 +20,7 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #2E2D2C
-background = #2b3339
+background = #902b3339
 background-alt = #495660
 background-light = #d4d0a7
 ;foreground = ${xrdb:color7:#222}
@@ -39,172 +39,45 @@ white       = #D3C6AA
 
 [bar/main]
 background = ${colors.background}
-wm-restack = i3
+wm-restack = bspwm
 override-redirect = true
 cursor-click = pointer
 cursor-scroll = ns-resize
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
 line-size = 2
 line-color = #f00
 border-color = #00000000
 radius=8
 
-
-[bar/left]
-inherit = bar/main
-;monitor = ${env:MONITOR:HDMI-1}
-width = 13%
-height = 26
-offset-x = 1%
-offset-y = 7px
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.green}
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = Fira Code Medium:pixelsize=12;2
-font-1 = Material Design Icons:pixelsize=11:style:Regular;1
-;font-2 = FontAwesome:pixelsize=11;1
-;font-3 = unifont:fontformat=truetype:size=8:antialias=true;0
-;font-4 = siji:pixelsize=14;1
-modules-center = date
-
-
-
-[bar/title]
-inherit = bar/main
-;monitor = ${env:MONITOR:HDMI-1}
-width = 22%
-height = 26
-offset-x = 17%
-offset-y = 7px
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.green}
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 1
-enable-ipc = true
-
-font-0 = FiraCode Nerd Font:pixelsize=12;2
-font-1 = Material Design Icons:pixelsize=11:style:Regular;1
-;font-2 = FontAwesome:pixelsize=11;1
-;font-3 = unifont:fontformat=truetype:size=8:antialias=true;0
-;font-4 = siji:pixelsize=14;1
-
-modules-center = spotify spotify-prev spotify-play-pause spotify-next
-;sep xwindow
-
-[bar/window]
-inherit = bar/left
-offset-y = 97%
-modules-center = xwindow
-
-
-
-
-[bar/mid]
-inherit = bar/main
-width = 17%
-height = 26
-offset-x = 42%
-offset-y = 7px
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = Fira Code Medium:pixelsize=12;2
-font-1 = unifont:fontformat=truetype:size=8:antialias=true;0
-font-2 = siji:pixelsize=14;1
-font-3 = FontAwesome:pixelsize=11;1
-
-modules-center = i3
-
-
 [bar/right]
 inherit = bar/main
 
-width = 30%
-height = 26
-offset-x = 69%
-offset-y = 7px
+width = 1896
+height = 38
+radius = 12.0
+fixed-center = true
+offset-x = 12
+offset-y = 12
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-padding-left = 0
+padding-left = 1
 padding-right = 1
+bottom = false
 
+tray-position = right
 
 font-0 = FiraCode Nerd Font:pixelsize=12;2
 font-1 = Material Icons:pixelsize=13:style:Regular;2
 font-2 = FontAwesome:pixelsize=11;2
 font-3 = Material Design Icons:pixelsize=13:style:Regular;2
+font-4 = Noto Sans:style=Medium:pixelsize=13;3
 
-modules-center = cpu sep temperature sep memory sep volume sep eth 
-
-
-
-[bar/sys]
-inherit = bar/main
-
-width = 60%
-height = 26
-offset-x = 39%
-offset-y = 97%
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-padding-left = 0
-padding-right = 1
-enable-ipc = true
-
-font-0 = FiraCode Nerd Font:pixelsize=12;2
-font-1 = Material Icons:pixelsize=13:style:Regular;1
-font-2 = FontAwesome:pixelsize=11;1
-font-3 = Material Design Icons:pixelsize=13:style:Regular;1
-
-modules-center = cpu-freq sep processes sep filesystem sep picom-toggle sep dunst sep removable-disks
-
-[bar/right2]
-inherit = bar/right
-monitor = DP-3
-
-[bar/mid2]
-inherit = bar/mid
-monitor = DP-3
-
-[bar/left2]
-inherit = bar/left
-monitor = DP-3
-
-[bar/title2]
-inherit = bar/title
-monitor = DP-3
-
-[bar/window2]
-inherit = bar/window
-monitor = DP-3
-
-[bar/sys2]
-inherit = bar/sys
-monitor = DP-3
+modules-right = cpu-freq temperature memory volume eth dunst battery date
+modules-left = whoami xwindow
+modules-center = bspwm
 
 
 [module/sysinfo]
@@ -287,13 +160,18 @@ exec = echo "怜"
 format = <label>
 click-left = playerctl next -p spotify
 
-
+[module/whoami]
+type = custom/script
+exec = whoami
+interval = 3600
+format =  <label>
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:20:...%
+label =  %title:0:20:...%
 label-empty = "None"
 label-empty-foreground = ${colors.cyan}
+format-prefix = "  "
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -329,22 +207,24 @@ label-unmounted-padding = 1
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
+label-focused-font = 4
 
-label-occupied = %index%
+label-occupied = %name%
 label-occupied-padding = 2
+label-occupied-font = 4
 
-label-urgent = %index%!
+label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
+label-urgent-font = 4
 
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty = %name%
 label-empty-padding = 2
-
+label-empty-font = 4
 ; Separator in between workspaces
 ; label-separator = |
 
@@ -465,7 +345,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp10s0 
+interface = wlp0s20f3 
 interval = 3.0
 
 format-connected-prefix = "   "
@@ -480,22 +360,17 @@ format-disconnected =
 ;
 [module/sep]
 type = custom/text
-content=|
+content=•
 content-foreground = #555
 
 
 [module/date]
 type = internal/date
-interval = 1
-
-date = "%a %d.%m.%Y"
-date-alt = "%a %d.%m.%Y"
-
-time = %a %d %b %H:%M
-time-alt = %H:%M - %a %d.%m.%Y
-
-format-padding = 2
-
+interval = 5
+date = ""
+date-alt = " %Y-%m-%d"
+time = %l:%M %p
+time-alt = %l:%M %p
 label = %time%
 
 [module/volume]
@@ -518,8 +393,8 @@ ramp-volume-0 = 
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ADP1
-full-at = 99
+adapter = ADP0
+full-at = 100
 format-charging = <animation-charging> <label-charging>
 format-charging-padding = 1
 
@@ -527,7 +402,7 @@ format-charging-padding = 1
 format-discharging = <ramp-capacity>  <label-discharging>
 format-discharging-padding = 1
 
-format-full-prefix = 
+format-full-prefix = "  "
 format-full-prefix-foreground = ${colors.yellow}
 format-full-padding = 1
 
@@ -577,7 +452,7 @@ animation-charging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/class/hwmon/hwmon2/temp1_input
 warn-temperature = 80
 
 format-prefix = " "
@@ -654,7 +529,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-pseudo-transparency = true
+pseudo-transparency = false
 
 [global/wm]
 margin-top = 5

@@ -2,10 +2,10 @@
 
 * {
     font: "Fira Code Nerd Font Medium 12";
-    foreground: #d3c6aa;
-    background: #2b3339;
-    active-background: #323d43;
-    urgent-background: #242527;
+    foreground: argb:aad3c6aa;
+    background: rgba ( 45, 48, 59, 20 % );
+    active-background: rgba(60,70,79,60%);
+    urgent-background: argb:aa242527;
     selected-background: @active-background;
     selected-urgent-background: @urgent-background;
     selected-active-background: @active-background;
@@ -14,39 +14,35 @@
 }
 
 #window {
-    background-color: @background;
-    border:           5;
+    border:           0;
     border-radius: 10;
-    border-color: @bordercolor;
-    padding:          20;
+    border-color: @background;
+    padding:          0;
 }
 #mainbox {
     border:  0;
     padding: 0;
-    background-color: @background;
 }
 #message {
-    border:       1px dash 0px 0px ;
-    border-color: @separatorcolor;
+    border:       0px dash 0px 0px ;
+    border-color: @background;
     background-color: @background;
-    padding:      1px ;
+    padding:      0px ;
 }
 #textbox {
     text-color: @foreground;
     background-color: @background;
+    padding: 0;
 }
 #listview {
-    fixed-height: 6;
-    border:       2px dash 0px 0px ;
-    border-color: @bordercolor;
-    background-color: @background;
-    spacing:      2px ;
+    border:       0px dash 0px 0px ;
+    spacing:      0px ;
     scrollbar:    false;
-    padding:      2px 0px 0px ;
+    padding:      0px 0px 0px ;
 }
 #element {
     border:  0;
-    padding: 1px ;
+    padding: 0px ;
 }
 #element.normal.normal {
     background-color: @background;
@@ -91,7 +87,7 @@
     padding:      0;
 }
 #sidebar {
-    border:       2px dash 0px 0px ;
+    border:       0px dash 0px 0px ;
     border-color: @separatorcolor;
 }
 #button.selected {
@@ -125,7 +121,7 @@
 #textbox-prompt-colon {
     expand:     false;
     str:        ":";
-    margin:     0px 0.3em 0em 0em ;
+    margin:     0px 0em 0em 0em ;
     text-color: @foreground;
     background-color: @background;
 }

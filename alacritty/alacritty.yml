@@ -1,0 +1,49 @@
+env:
+  TERM: xterm-256color
+
+window:
+  padding:
+    x: 10
+    y: 10
+  dynamic_padding: false
+  decorations: full
+
+font:
+  normal:
+    family: Noto Sans Mono
+    style: Medium
+  bold:
+    family: Noto Sans Mono
+    style: Bold
+  italic:
+    family: Noto Sans Mono
+    style: Regular Italic
+  size: 15
+
+colors:
+  primary:
+    background: '0x2b3339'
+    foreground: '0xd3c6aa'
+
+  normal:
+    black:   '0x272727'
+    red:     '0xe67e80'
+    green:   '0xa7c080'
+    yellow:  '0xdbbc7f'
+    blue:    '0x7fbbb3'
+    magenta: '0xd699b6'
+    cyan:    '0x83c092'
+    white:   '0xd3c6aa'
+
+  bright:
+    black:   '0x928373'
+    red:     '0xf85552'
+    green:   '0x8da101'
+    yellow:  '0xdfa000'
+    blue:    '0x3a94c5'
+    magenta: '0xdf69ba'
+    cyan:    '0x35a77c'
+    white:   '0x5c6a72'
+
+window:
+  opacity: 0.5  # value range is 0 ~ 1
