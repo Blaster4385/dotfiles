@@ -1,0 +1,17 @@
+includes = []
+
+packages = [
+  "alacritty",
+  "conky",
+  "dunst",
+  "gtk",
+  "i3",
+  "mpd",
+  "nvim",
+  "polybar",
+  "rofi"
+]
+
+[files]
+
+[variables]

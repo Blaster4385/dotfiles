@@ -1,0 +1,33 @@
+[helpers]
+
+[default]
+depends = []
+
+[alacritty.files]
+"alacritty" = "~/.config/alacritty"
+
+[conky.files]
+"conky" = "~/.config/conky"
+
+[dunst.files]
+"dunst" = "~/.dunst"
+
+[gtk.files]
+"gtk-3.0" = "~/.config/gtk-3.0"
+"themes" = "~/.themes"
+
+[i3.files]
+"i3" = "~/.config/i3"
+
+[mpd.files]
+"mpd" = "~/.config/mpd"
+
+[nvim.files]
+"nvim/nvchad" = {target = "~/.config/nvim/", type = "symbolic"}
+"nvim/custom" = {target = "~/.config/nvim/lua/custom/", type = "symbolic"}
+
+[polybar.files]
+"polybar" = "~/.config/polybar"
+
+[rofi.files]
+"rofi" = "~/.config/rofi"
