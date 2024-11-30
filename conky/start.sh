@@ -1,5 +1,5 @@
 #!/bin/bash
 
 killall conky
+conky -y -1160 &
 conky &
-conky -y -1440 &
