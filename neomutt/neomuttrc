@@ -1,0 +1,7 @@
+# vim: filetype=neomuttrc
+
+source ~/.config/neomutt/accounts/venkatesh@tablaster.dev.muttrc
+source ~/.config/neomutt/settings
+source ~/.config/neomutt/colors
+source ~/.config/neomutt/mappings
+macro index,pager i1 '<sync-mailbox><enter-command>source /home/venkatesh/.config/neomutt/accounts/venkatesh@tablaster.dev.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to venkatesh@tablaster.dev"

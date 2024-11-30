@@ -1,0 +1,21 @@
+# vim: filetype=neomuttrc
+# muttrc file for account venkatesh@tablaster.dev
+set realname = "venkatesh"
+set from = "venkatesh@tablaster.dev"
+set sendmail = "msmtp -a venkatesh@tablaster.dev"
+alias me venkatesh <venkatesh@tablaster.dev>
+set folder = "/home/venkatesh/.local/share/mail/venkatesh@tablaster.dev"
+set header_cache = /home/venkatesh/.cache/neomutt/venkatesh@tablaster.dev/headers
+set message_cachedir = /home/venkatesh/.cache/neomutt/venkatesh@tablaster.dev/bodies
+set mbox_type = Maildir
+set hostname = "tablaster.dev"
+set spoolfile = +INBOX
+set postponed = +Drafts
+set trash = +Trash
+set record = +Sent
+
+macro index o "<shell-escape>mbsync venkatesh@tablaster.dev<enter>" "run mbsync to sync venkatesh@tablaster.dev"
+macro index \eg "<enter-command>unset wait_key<enter><shell-escape>gpg --list-secret-keys; printf 'Enter email ID of user to publish: '; read eID; printf 'Enter fingerprint of GPG key to publish: '; read eFGPT; /usr/libexec/gpg-wks-client --create \$eFGPT \$eID | msmtp --read-envelope-from --read-recipients -a venkatesh@tablaster.dev<enter>"  "publish GPG key to WKS provider"
+macro index \eh "<pipe-message>/usr/libexec/gpg-wks-client --receive | msmtp --read-envelope-from --read-recipients -a venkatesh@tablaster.dev<enter>" "confirm GPG publication"
+
+mailboxes "=Trash" "=Sent Messages" "=Sent" "=INBOX"

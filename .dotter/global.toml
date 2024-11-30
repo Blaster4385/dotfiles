@@ -22,6 +22,9 @@ depends = []
 [mpd.files]
 "mpd" = "~/.config/mpd"
 
+[neomutt.files]
+"neomutt" = "~/.config/neomutt"
+
 [nvim.files]
 "nvim/nvchad" = {target = "~/.config/nvim/", type = "symbolic"}
 "nvim/custom" = {target = "~/.config/nvim/lua/custom/", type = "symbolic"}

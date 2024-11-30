@@ -7,6 +7,7 @@ packages = [
   "gtk",
   "i3",
   "mpd",
+  "neomutt",
   "nvim",
   "polybar",
   "rofi"
