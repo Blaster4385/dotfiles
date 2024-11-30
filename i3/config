@@ -14,20 +14,20 @@ exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wall.png
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id picom
 exec --no-startup-id xset r rate 250 25
-exec --no-startup-id xrandr --output DP-0 --auto --above DP-2
 exec --no-startup-id xrdb -load ~/.Xdefaults
-exec --no-startup-id ~/.config/conky/start.sh
+exec --no-startup-id greenclip daemon &
+exec_always --no-startup-id ~/.config/conky/start.sh
 
-workspace 1 output DP-2
-workspace 2 output DP-2
-workspace 3 output DP-2
-workspace 4 output DP-2
-workspace 5 output DP-2
-workspace 6 output DP-0
-workspace 7 output DP-0
-workspace 8 output DP-0
-workspace 9 output DP-0
-workspace 10 output DP-0
+workspace 1 output DP-4
+workspace 2 output DP-4
+workspace 3 output DP-4
+workspace 4 output DP-4
+workspace 5 output DP-4
+workspace 6 output DP-2
+workspace 7 output DP-2
+workspace 8 output DP-2
+workspace 9 output DP-2
+workspace 10 output DP-2
 
 # Lockscreen.
 bindsym $mod+Shift+x exec --no-startup-id ~/scripts/lock.sh
@@ -43,13 +43,14 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -font "JetBrainsMono Nerd Font 10" -show drun
+bindsym $mod+c exec --no-startup-id rofi -font "JetBrainsMono Nerd Font 10" -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # change focus
 bindsym $mod+j focus left
@@ -94,6 +95,9 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+bindsym $mod+shift+s move scratchpad
+bindsym $mod+shift+d scratchpad show
 
 # focus the parent container
 bindsym $mod+a focus parent
